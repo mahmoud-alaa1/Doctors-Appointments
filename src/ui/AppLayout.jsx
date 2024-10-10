@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 function AppLayout() {
   return (
-    <div>
+    <div className="container">
       header
       <Outlet />
       footer

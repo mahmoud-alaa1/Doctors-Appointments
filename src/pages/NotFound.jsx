@@ -4,7 +4,7 @@ function NotFound() {
   return (
     <div>
       Not Found
-      <Link to="/">Home Page</Link>
+      <Link className="underline" to="/">Got to Home Page</Link>
     </div>
   );
 }

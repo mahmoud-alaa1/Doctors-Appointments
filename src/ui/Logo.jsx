@@ -1,8 +1,8 @@
 import Brand from "../icons/Brand"
 
-function Logo() {
+function Logo({className=""}) {
   return (
-    <div className="flex items-center gap-5">
+    <div className={`flex items-center gap-5 ${className}`}>
       <Brand />
       <p className="text-[#000B6D] tracking-widest text-4xl font-medium ">Shfaa</p>
     </div>

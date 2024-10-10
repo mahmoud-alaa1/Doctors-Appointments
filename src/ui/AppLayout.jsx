@@ -1,14 +1,15 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
+import Footer from "./Footer";
 
 function AppLayout() {
   return (
-    <div className="container mx-auto bg-[#ffffff]">
+    <div className="container mx-auto bg-[#ffffff] min-h-screen">
       <Header />
-      <main>
+      <main className="p-4">
         <Outlet />
       </main>
-      footer
+      <Footer />
     </div>
   );
 }

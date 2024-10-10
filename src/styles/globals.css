@@ -9,5 +9,5 @@ nav ul li a.active::before {
   position: absolute;
   left: 10%;
   right: 10%;
-  bottom: -8px;
+  bottom: -10px;
 }

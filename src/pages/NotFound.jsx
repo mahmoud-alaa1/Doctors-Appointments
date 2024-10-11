@@ -2,9 +2,15 @@ import { Link } from "react-router-dom";
 
 function NotFound() {
   return (
-    <div>
-      Not Found
-      <Link className="underline" to="/">Got to Home Page</Link>
+    <div className="flex flex-col gap-3 text-center justify-center items-center">
+      <img className="" width={400} height={400} src="/not-found.png" alt="" />
+      <p className="font-semibold">Oops something went wrong!</p>
+      <Link
+        className=" py-2 px-4 font-semibold bg-[#5F6FFF] w-fit rounded-full text-white"
+        to="/"
+      >
+        Go Home Page
+      </Link>
     </div>
   );
 }

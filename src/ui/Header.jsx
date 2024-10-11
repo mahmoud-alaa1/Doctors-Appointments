@@ -15,7 +15,7 @@ function Header() {
         <Link to="/">
           <Logo />
         </Link>
-        <ul className="flex text-md gap-8 font-outfit text-[#1F2937] font-semibold uppercase items-center tracking-wider">
+        <ul className="flex flex-wrap justify-center text-md gap-8 font-outfit text-[#1F2937] font-semibold uppercase items-center tracking-wider">
           {links.map((link) => (
             <li key={link.url}>
               <NavLink className="relative" to={link.url}>

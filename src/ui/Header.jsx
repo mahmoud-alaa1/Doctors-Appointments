@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import Logo from "./Logo";
+import LinkUi from "../ui/Link";
 
 const links = [
   { name: "Home", url: "/" },
@@ -10,7 +11,7 @@ const links = [
 
 function Header() {
   return (
-    <header className="p-6 border-b mb-5 border-[#ADADAD]">
+    <header className="text-nowrap p-6 border-b mb-5 border-[#ADADAD]">
       <nav className="flex flex-col lg:flex-row gap-6 justify-between items-center">
         <Link to="/">
           <Logo />
@@ -26,12 +27,12 @@ function Header() {
         </ul>
         <div className="flex gap-5 items-center font-outfit font-medium">
           <Link to="/login">Login</Link>
-          <Link
-            className="px-4 py-2 bg-[#5F6FFF] rounded-full text-[#fff]"
+          <LinkUi
+            className="px-4 py-2 bg-primary text-[#fff]"
             to="/signup"
           >
             Create account
-          </Link>
+          </LinkUi>
         </div>
       </nav>
     </header>

@@ -4,7 +4,7 @@ import Footer from "./Footer";
 
 function AppLayout() {
   return (
-    <div className="container mx-auto bg-[#ffffff] min-h-screen">
+    <div className="flex flex-col container mx-auto bg-[#ffffff] min-h-screen">
       <Header />
       <main className="p-4">
         <Outlet />

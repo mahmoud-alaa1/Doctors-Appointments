@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function NotFound() {
   return (
-    <div className="flex flex-col gap-3 text-center justify-center items-center">
+    <div className="flex flex-col  gap-3 text-center justify-center items-center">
       <img className="" width={400} height={400} src="/not-found.png" alt="" />
       <p className="font-semibold">Oops something went wrong!</p>
       <Link

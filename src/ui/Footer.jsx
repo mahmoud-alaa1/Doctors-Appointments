@@ -3,8 +3,8 @@ import Logo from "./Logo";
 
 function Footer() {
   return (
-    <footer className=" mt-20">
-      <div className="flex  p-4 flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14  text-sm">
+    <footer className="p-4 mt-auto">
+      <div className="flex   flex-wrap sm:grid grid-cols-[3fr_1fr_1fr] gap-14  text-sm">
         <div className="text-gray-600">
           <Logo className="mb-5" />
           <p className="w-full md:w-2/3   leading-6">
@@ -50,7 +50,7 @@ function Footer() {
           </ul>
         </div>
       </div>
-      <hr />
+      <hr className="my-5"/>
       <p className="text-center mt-4 tracking-wide">
         Copyright 2024 &copy; Shfaa Foundation - All Right Reserved.
       </p>

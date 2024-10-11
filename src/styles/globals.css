@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  font-family: "Outfit", sans-serif;
+}
+
 nav ul li a.active::before {
   content: "";
   border: 1px solid #5F6FFF;

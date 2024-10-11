@@ -11,7 +11,7 @@ const links = [
 
 function Header() {
   return (
-    <header className="text-nowrap p-6 border-b mb-5 border-[#ADADAD]">
+    <header className="text-nowrap p-6 border-b  border-[#ADADAD]">
       <nav className="flex flex-col lg:flex-row gap-6 justify-between items-center">
         <Link to="/">
           <Logo />

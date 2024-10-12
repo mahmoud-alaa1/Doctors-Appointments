@@ -5,6 +5,8 @@ import ErrorInputFieldMassage from "../ui/ErrorInputFieldMassage";
 import useSignUp from "../hooks/useSignUp";
 import Spinner from "./Spinner";
 import { signUpSchema } from "../validation/validation";
+import Input from "./Input";
+import SubmitButton from "./SubmitButton";
 
 const initialData = {
   fullName: "",
@@ -18,7 +20,7 @@ function SignUpForm() {
     signUpSchema
   );
 
-  const { data: userData, isPending, signUp } = useSignUp();
+  const { isPending, signUp } = useSignUp();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -40,69 +42,25 @@ function SignUpForm() {
         </FormUi.Subtitle>
       </FormUi.Header>
       <FormUi.Body>
-        <label
-          className={`flex flex-col gap-1 ${
-            validationErrors?.fullName ? "text-red-500" : ""
-          }`}
-        >
+        <Input error={validationErrors?.fullName} type="text" name={"fullName"}>
           Full Name
-          <input
-            name="fullName"
-            className={`border-2  py-2 px-2 rounded-lg ${
-              validationErrors?.fullName ? "border-red-500" : ""
-            }`}
-            type="text"
-          />
-          <ErrorInputFieldMassage>
-            {validationErrors?.fullName}
-          </ErrorInputFieldMassage>
-        </label>
-        <label
-          className={`flex flex-col gap-1 ${
-            validationErrors?.email ? "text-red-500" : ""
-          }`}
-        >
+        </Input>
+
+        <Input error={validationErrors?.email} type="email" name={"email"}>
           Email
-          <input
-            name="email"
-            className={`border-2 outline-none  py-2 px-2 rounded-lg ${
-              validationErrors?.email ? "border-red-500" : ""
-            }`}
-            type="email"
-          />
-          <ErrorInputFieldMassage>
-            {validationErrors?.email}
-          </ErrorInputFieldMassage>
-        </label>
-        <label
-          className={`flex flex-col gap-1 ${
-            validationErrors?.password ? "text-red-500" : ""
-          }`}
+        </Input>
+
+        <Input
+          error={validationErrors?.password}
+          type="password"
+          name={"password"}
         >
           Password
-          <input
-            name="password"
-            className={`border-2 py-2 px-2 rounded-lg ${
-              validationErrors?.password ? "border-red-500" : ""
-            }`}
-            type="password"
-          />
-          <ErrorInputFieldMassage>
-            {validationErrors?.password}
-          </ErrorInputFieldMassage>
-        </label>
-        <button
-          type="submit"
-          disabled={isPending}
-          className={`bg-primary  ${
-            isPending ? "opacity-50" : ""
-          } text-[#fff] py-2 rounded-lg ${
-            isPending ? "cursor-not-allowed" : ""
-          } text-center`}
-        >
-          {isPending ? <Spinner /> : "Create Account"}
-        </button>
+        </Input>
+
+        <SubmitButton isPending={isPending}>Create Account</SubmitButton>
       </FormUi.Body>
+
       <FormUi.Footer>
         Already have an account?&nbsp;
         <Link to={"/login"} className="underline text-primary">

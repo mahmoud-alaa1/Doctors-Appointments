@@ -2,7 +2,9 @@ import { useState } from "react";
 
 // Custom hook to manage form data and validation
 function useFormData(initialData, schema) {
+  
   const [formData, setFormData] = useState(initialData);
+
   const [validationErrors, setValidationErrors] = useState({});
 
   // Validate form data using the provided schema

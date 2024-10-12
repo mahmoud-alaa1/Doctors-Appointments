@@ -1,10 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 function useSignUp() {
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(false);
-  const [error, setError] = useState("");
 
   const signUp = async ({ email, password }) => {
     console.log(email, password);
@@ -25,13 +25,14 @@ function useSignUp() {
       );
 
       setData(response.data);
+      toast.success("Your account is successfully created!");
     } catch (error) {
-      setError(error.response?.data?.msg || "An error occurred");
+      toast.error(error.response?.data?.msg || "An error occurred");
     } finally {
       setIsPending(false);
     }
   };
-  return { data, error, isPending, signUp };
+  return { data, isPending, signUp };
 }
 
 export default useSignUp;

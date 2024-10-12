@@ -18,19 +18,17 @@ function SignUpForm() {
     signUpSchema
   );
 
-  const { data: userData, error, isPending, signUp } = useSignUp();
+  const { data: userData, isPending, signUp } = useSignUp();
 
-  console.log(validationErrors);
-
-  function handleSubmit(e) {
-    validateData();
-
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    if (Object.keys(validationErrors).length > 0) return;
+    // Validate form data
+    const errors = validateData();
+
+    if (Object.keys(errors).length > 0) return;
 
     signUp(formData);
-
   }
 
   return (

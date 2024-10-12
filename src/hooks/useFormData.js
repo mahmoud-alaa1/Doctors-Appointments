@@ -1,35 +1,29 @@
-import { valid } from "joi";
 import { useState } from "react";
 
-//**you must give every input field a name attribute**
-
-function useFormData(iniitialData, schema) {
-  const [formData, setState] = useState(iniitialData);
+// Custom hook to manage form data and validation
+function useFormData(initialData, schema) {
+  const [formData, setFormData] = useState(initialData);
   const [validationErrors, setValidationErrors] = useState({});
 
-  function validateData() {
-    const errors = schema
-      ?.validate(formData, { abortEarly: false })
-      ?.error?.details.reduce((acc, curr) => {
-        return { ...acc, [curr.path[0]]: curr.message };
-      }, {}) || {};
+  // Validate form data using the provided schema
+  const validateData = () => {
+    const errors =
+      schema
+        ?.validate(formData, { abortEarly: false })
+        ?.error?.details.reduce((acc, curr) => {
+          return { ...acc, [curr.path[0]]: curr.message };
+        }, {}) || {};
 
     setValidationErrors(errors);
-  }
+    return errors;
+  };
 
+  // Update form data and trigger validation
   const handleData = (e) => {
     const { name, value } = e.target;
-
-    //Get new data form
-    const newInput = { ...formData, [name]: value };
-
-    //Update the state
-    setState(newInput);
-
-    validateData();
-
-
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
+
   return { formData, handleData, validationErrors, validateData };
 }
 

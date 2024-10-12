@@ -52,7 +52,7 @@ function Footer() {
       </div>
       <hr className="my-5"/>
       <p className="text-center mt-4 tracking-wide">
-        Copyright 2024 &copy; Shfaa Foundation - All Right Reserved.
+        Copyright 2024 &copy; Shifaa Foundation - All Right Reserved.
       </p>
     </footer>
   );

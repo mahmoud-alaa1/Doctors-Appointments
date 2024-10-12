@@ -20,7 +20,7 @@ function SignUpForm() {
 
   const { isPending, signUp } = useSignUp();
 
-  async function handleSubmit(e) {
+   function handleSubmit(e) {
     e.preventDefault();
 
     // Validate form data
@@ -33,12 +33,14 @@ function SignUpForm() {
 
   return (
     <FormUi onChange={handleData} onSubmit={handleSubmit}>
+      
       <FormUi.Header>
         <FormUi.Title>Create Account</FormUi.Title>
         <FormUi.Subtitle>
           Please sign up so you can book appointment
         </FormUi.Subtitle>
       </FormUi.Header>
+
       <FormUi.Body>
         <Input error={validationErrors?.fullName} type="text" name={"fullName"}>
           Full Name

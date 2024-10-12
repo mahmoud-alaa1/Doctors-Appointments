@@ -7,7 +7,7 @@ function useSignUp() {
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(false);
 
-  const navigtae = useNavigate();
+  const navigate = useNavigate();
 
   const signUp = async ({ email, password, fullName }) => {
     console.log(email, password);
@@ -48,7 +48,7 @@ function useSignUp() {
 
       setData(response.data);
       toast.success("Your account is successfully created!");
-      navigtae("/login");
+      navigate("/login");
     } catch (error) {
       toast.error(error.response?.data?.msg || "An error occurred");
     } finally {

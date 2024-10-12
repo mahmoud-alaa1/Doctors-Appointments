@@ -16,7 +16,7 @@ function LoginForm() {
     initialData,
     signInSchema
   );
-  const { data, isPending, signIn } = useSignIn();
+  const { isPending, signIn } = useSignIn();
   async function handleSubmit(e) {
     e.preventDefault();
 

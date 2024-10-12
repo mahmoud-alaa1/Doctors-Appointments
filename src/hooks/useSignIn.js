@@ -2,10 +2,11 @@ import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../context/userContext";
 
 function useSignIn() {
-  const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(false);
+  const { setUser } = useUser();
   const navigtae = useNavigate();
   const signIn = async ({ email, password }) => {
     try {
@@ -21,15 +22,15 @@ function useSignIn() {
         },
         {
           headers: {
-            apikey: import.meta.env.VITE_SUPABASE_KEY, // Your Supabase anon key
+            apikey: import.meta.env.VITE_SUPABASE_KEY,
             "Content-Type": "application/json",
           },
         }
       );
       const { access_token } = response.data;
       localStorage.setItem("supabaseToken", access_token);
-      setData(response.data);
       toast.success("You successfully logged in!");
+      setUser({ token: access_token });
       navigtae("/");
     } catch (error) {
       const errorMessage =
@@ -41,7 +42,7 @@ function useSignIn() {
     }
   };
 
-  return { data, isPending, signIn };
+  return { isPending, signIn };
 }
 
 export default useSignIn;

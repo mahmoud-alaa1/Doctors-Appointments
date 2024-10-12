@@ -1,6 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import Logo from "./Logo";
 import LinkUi from "../ui/Link";
+import { useUser } from "../context/userContext";
+import { useJwt } from "react-jwt";
 
 const links = [
   { name: "Home", url: "/" },
@@ -10,6 +12,9 @@ const links = [
 ];
 
 function Header() {
+  const { user } = useUser();
+  const { decodedToken, isExpired } = useJwt(user);
+
   return (
     <header className="text-nowrap p-6 border-b  border-[#ADADAD]">
       <nav className="flex flex-col lg:flex-row gap-6 justify-between items-center">
@@ -27,10 +32,7 @@ function Header() {
         </ul>
         <div className="flex gap-5 items-center font-outfit font-medium">
           <Link to="/login">Login</Link>
-          <LinkUi
-            className="px-4 py-2 bg-primary text-[#fff]"
-            to="/signup"
-          >
+          <LinkUi className="px-4 py-2 bg-primary text-[#fff]" to="/signup">
             Create account
           </LinkUi>
         </div>

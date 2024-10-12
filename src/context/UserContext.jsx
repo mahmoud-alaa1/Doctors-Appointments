@@ -1,21 +1,20 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 import { useJwt } from "react-jwt";
 
-const UseerContext = createContext();
+const UserContext = createContext();
 
 function UserContextProvider({ children }) {
   const token = localStorage.getItem("supabaseToken");
-  const { decodedToken, isExpired } = useJwt(token);
-  console.log(decodedToken, isExpired);
+  const [user, setUser] = useState(token);
   return (
-    <UseerContext.Provider value={{ user: decodedToken, isExpired }}>
+    <UserContext.Provider value={{ user, setUser }}>
       {children}
-    </UseerContext.Provider>
+    </UserContext.Provider>
   );
 }
 
 function useUser() {
-  const context = useContext(UseerContext);
+  const context = useContext(UserContext);
 
   if (context == undefined) {
     console.error("User Context is used outside the provider");

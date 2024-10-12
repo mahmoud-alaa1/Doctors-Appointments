@@ -1,4 +1,4 @@
-export function signIn() {
+export function signUp() {
  
 }
 

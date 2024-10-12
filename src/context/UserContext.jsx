@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react";
 const UserContext = createContext();
 
 function UserContextProvider({ children }) {
-  const token = localStorage.getItem("supabaseToken");
+  const token = localStorage.getItem("supabaseToken") || null;
   const [user, setUser] = useState(token);
   return (
     <UserContext.Provider value={{ user, setUser }}>

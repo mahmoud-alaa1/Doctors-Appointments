@@ -2,9 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import Logo from "./Logo";
 import LinkUi from "../ui/Link";
 import { useUser } from "../context/userContext";
-import { useJwt } from "react-jwt";
 import toast from "react-hot-toast";
-import { useEffect } from "react";
 
 const links = [
   { name: "Home", url: "/" },
@@ -27,6 +25,7 @@ const profileLinks = [
   { name: "My Appointsments", url: "/appointments" },
   { name: "Profile", url: "/profile" },
 ];
+
 const NavProfile = () => {
   const { setUser } = useUser();
   const handleLogout = () => {
@@ -34,6 +33,7 @@ const NavProfile = () => {
     localStorage.removeItem("supabaseToken");
     toast.success("Logged out successfully");
   };
+
   return (
     <div className="dropdown relative flex items-center gap-2 ">
       <img
@@ -61,10 +61,9 @@ const NavProfile = () => {
 
 function Header() {
   const { user } = useUser();
-  const { decodedToken, isExpired } = useJwt(user);
-  console.log(decodedToken, isExpired);
+
   return (
-    <header className="text-nowrap p-6 border-b  border-[#ADADAD]">
+    <header className="text-nowrap p-6 border-b border-[#ADADAD]">
       <nav className="flex flex-col lg:flex-row gap-6 justify-between items-center">
         <Link to="/">
           <Logo />

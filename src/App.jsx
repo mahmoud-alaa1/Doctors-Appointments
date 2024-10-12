@@ -9,12 +9,12 @@ import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import { Toaster } from "react-hot-toast";
 import ProtectedRoute from "./ui/ProtectedRoute";
+import { UserContextProvider } from "./context/userContext";
 
 function App() {
   return (
-    <>
+    <UserContextProvider>
       <Toaster />
-
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
@@ -30,7 +30,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </>
+    </UserContextProvider>
   );
 }
 

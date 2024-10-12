@@ -3,12 +3,30 @@ import FormUi from "./FormUi";
 import { signInSchema } from "../validation/validation";
 import useFormData from "../hooks/useFormData";
 import ErrorInputFieldMassage from "./ErrorInputFieldMassage";
+import useSignUp from "../hooks/useSignUp";
+
+const initialData = {
+  email: "",
+  password: "",
+};
 
 function LoginForm() {
-  const [handleData, validationErrors] = useFormData({}, signInSchema);
+  const { formData, handleData, validationErrors, validateData } = useFormData(
+    initialData,
+    signInSchema
+  );
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    // Validate form data
+    const errors = validateData();
+
+    if (Object.keys(errors).length > 0) return;
+  }
 
   return (
-    <FormUi onChange={handleData}>
+    <FormUi onChange={handleData} onSubmit={handleSubmit}>
       <FormUi.Header>
         <FormUi.Title>Login</FormUi.Title>
         <FormUi.Subtitle>

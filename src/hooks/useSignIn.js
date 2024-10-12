@@ -34,7 +34,7 @@ function useSignIn() {
     } catch (error) {
       const errorMessage =
         error.response?.data?.error_description ||
-        "An error occurred during sign-in.";
+        "Your email or password is wrong.";
       toast.error(errorMessage);
     } finally {
       setIsPending(false);

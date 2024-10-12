@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import FormUi from "./FormUi";
 import useFormData from "../hooks/useFormData";
-import ErrorInputFieldMassage from "../ui/ErrorInputFieldMassage";
 import useSignUp from "../hooks/useSignUp";
-import Spinner from "./Spinner";
-import { signUpSchema } from "../validation/validation";
+import { signUpSchema } from "../validation";
 import Input from "./Input";
 import SubmitButton from "./SubmitButton";
 

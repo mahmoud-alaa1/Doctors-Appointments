@@ -1,6 +1,6 @@
-function FormUi({ children }) {
+function FormUi({ children,onChange,onSubmit }) {
   return (
-    <form className="p-6 shadow-form flex flex-col gap-4 m-auto max-w-[450px]  border border-[#D4D4D4] rounded-xl">
+    <form onChange={onChange} onSubmit={onSubmit} className="p-6 shadow-form flex flex-col gap-4 m-auto max-w-[450px]  border border-[#D4D4D4] rounded-xl">
       {children}
     </form>
   );

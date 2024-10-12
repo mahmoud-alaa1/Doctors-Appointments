@@ -5,11 +5,7 @@ import useFormData from "../hooks/useFormData";
 import ErrorInputFieldMassage from "./ErrorInputFieldMassage";
 
 function LoginForm() {
-  const [formData, handleData, validationErrors] = useFormData(
-    {},
-    signInSchema
-  );
-  console.log(validationErrors,formData);
+  const [handleData, validationErrors] = useFormData({}, signInSchema);
 
   return (
     <FormUi onChange={handleData}>

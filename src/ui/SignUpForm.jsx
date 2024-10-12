@@ -4,10 +4,7 @@ import useFormData from "../hooks/useFormData";
 import { signUpSchema } from "../validation/validation";
 import ErrorInputFieldMassage from "../ui/ErrorInputFieldMassage";
 function SignUpForm() {
-  const [formData, handleData, validationErrors] = useFormData(
-    {},
-    signUpSchema
-  );
+  const [handleData, validationErrors] = useFormData({}, signUpSchema);
 
   return (
     <FormUi onChange={handleData}>

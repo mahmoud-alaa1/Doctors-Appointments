@@ -3,13 +3,31 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
   font-family: "Outfit", sans-serif;
 }
+.loader {
+  width: 20px;
+  height: 20px;
+  border: 3px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
 
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 nav ul li a.active::before {
   content: "";
-  border: 1px solid #5F6FFF;
+  border: 1px solid #5f6fff;
   position: absolute;
   left: 10%;
   right: 10%;

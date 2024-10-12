@@ -1,5 +1,4 @@
-export function signUp() {
- 
-}
 
+export const signUpUser = async (email, password) => {
 
+};

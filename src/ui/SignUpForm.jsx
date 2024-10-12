@@ -1,13 +1,40 @@
 import { Link } from "react-router-dom";
 import FormUi from "./FormUi";
 import useFormData from "../hooks/useFormData";
-import { signUpSchema } from "../validation/validation";
 import ErrorInputFieldMassage from "../ui/ErrorInputFieldMassage";
+import useSignUp from "../hooks/useSignUp";
+import Spinner from "./Spinner";
+import { signUpSchema } from "../validation/validation";
+
+const initialData = {
+  fullName: "",
+  email: "",
+  password: "",
+};
+
 function SignUpForm() {
-  const [handleData, validationErrors] = useFormData({}, signUpSchema);
+  const { formData, handleData, validationErrors, validateData } = useFormData(
+    initialData,
+    signUpSchema
+  );
+
+  const { data: userData, error, isPending, signUp } = useSignUp();
+
+  console.log(validationErrors);
+
+  function handleSubmit(e) {
+    validateData();
+
+    e.preventDefault();
+
+    if (Object.keys(validationErrors).length > 0) return;
+
+    signUp(formData);
+
+  }
 
   return (
-    <FormUi onChange={handleData}>
+    <FormUi onChange={handleData} onSubmit={handleSubmit}>
       <FormUi.Header>
         <FormUi.Title>Create Account</FormUi.Title>
         <FormUi.Subtitle>
@@ -68,9 +95,14 @@ function SignUpForm() {
         </label>
         <button
           type="submit"
-          className="bg-primary text-[#fff] py-2 rounded-lg"
+          disabled={isPending}
+          className={`bg-primary  ${
+            isPending ? "opacity-50" : ""
+          } text-[#fff] py-2 rounded-lg ${
+            isPending ? "cursor-not-allowed" : ""
+          } text-center`}
         >
-          Create Account
+          {isPending ? <Spinner /> : "Create Account"}
         </button>
       </FormUi.Body>
       <FormUi.Footer>

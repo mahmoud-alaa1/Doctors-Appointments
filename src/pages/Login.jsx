@@ -1,5 +1,7 @@
+import LoginForm from "../ui/LoginForm";
+
 function Login() {
-  return <div>Login</div>;
+  return <LoginForm />;
 }
 
 export default Login;

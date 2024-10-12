@@ -3,6 +3,8 @@ import Logo from "./Logo";
 import LinkUi from "../ui/Link";
 import { useUser } from "../context/userContext";
 import { useJwt } from "react-jwt";
+import toast from "react-hot-toast";
+import { useEffect } from "react";
 
 const links = [
   { name: "Home", url: "/" },
@@ -11,10 +13,56 @@ const links = [
   { name: "Contact", url: "/contact" },
 ];
 
+const NavSignIn = () => (
+  <div className="flex gap-5 items-center font-outfit font-medium">
+    <Link to="/login">Login</Link>
+    <LinkUi className="px-4 py-2 bg-primary text-[#fff]" to="/signup">
+      Create account
+    </LinkUi>
+  </div>
+);
+
+const profileLinks = [
+  { name: "Logout", url: "/" },
+  { name: "My Appointsments", url: "/appointments" },
+  { name: "Profile", url: "/profile" },
+];
+const NavProfile = () => {
+  const { setUser } = useUser();
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem("supabaseToken");
+    toast.success("Logged out successfully");
+  };
+  return (
+    <div className="dropdown relative flex items-center gap-2 ">
+      <img
+        src="/default-avatar.png"
+        className="w-9 rounded-full aspect-square"
+        alt="default user avatar"
+      />
+      <span className="opacity-75">&#11167;</span>
+      <ul className="flex flex-col gap-8">
+        <li>
+          <Link onClick={handleLogout} to={profileLinks[0].url}>
+            {profileLinks[0].name}
+          </Link>
+        </li>
+        <li>
+          <Link to={profileLinks[1].url}>{profileLinks[1].name}</Link>
+        </li>
+        <li>
+          <Link to={profileLinks[2].url}>{profileLinks[2].name}</Link>
+        </li>
+      </ul>
+    </div>
+  );
+};
+
 function Header() {
   const { user } = useUser();
   const { decodedToken, isExpired } = useJwt(user);
-
+  console.log(decodedToken, isExpired);
   return (
     <header className="text-nowrap p-6 border-b  border-[#ADADAD]">
       <nav className="flex flex-col lg:flex-row gap-6 justify-between items-center">
@@ -30,12 +78,7 @@ function Header() {
             </li>
           ))}
         </ul>
-        <div className="flex gap-5 items-center font-outfit font-medium">
-          <Link to="/login">Login</Link>
-          <LinkUi className="px-4 py-2 bg-primary text-[#fff]" to="/signup">
-            Create account
-          </LinkUi>
-        </div>
+        {!user ? <NavSignIn /> : <NavProfile />}
       </nav>
     </header>
   );

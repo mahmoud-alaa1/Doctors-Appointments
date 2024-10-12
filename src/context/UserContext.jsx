@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from "react";
-import { useJwt } from "react-jwt";
 
 const UserContext = createContext();
 

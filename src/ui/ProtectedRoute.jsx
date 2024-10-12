@@ -5,7 +5,6 @@ import { useJwt } from "react-jwt";
 function ProtectedRoute() {
   const { user } = useUser();
   const { decodedToken, isExpired } = useJwt(user);
-  console.log(decodedToken);
   return decodedToken && !isExpired ? (
     <Navigate to="/" replace={true} />
   ) : (

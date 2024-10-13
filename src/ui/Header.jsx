@@ -3,6 +3,7 @@ import Logo from "./Logo";
 import LinkUi from "../ui/Link";
 import { useUser } from "../context/userContext";
 import toast from "react-hot-toast";
+import { jwtDecode } from "jwt-decode";
 
 const links = [
   { name: "Home", url: "/" },
@@ -61,7 +62,8 @@ const NavProfile = () => {
 
 function Header() {
   const { user } = useUser();
-
+  const decodedUser = user?.token ? jwtDecode(user?.token) : null;
+  console.log(decodedUser); 
   return (
     <header className="text-nowrap p-6 border-b border-[#ADADAD]">
       <nav className="flex flex-col lg:flex-row gap-6 justify-between items-center">

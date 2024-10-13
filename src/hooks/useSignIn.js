@@ -30,7 +30,7 @@ function useSignIn() {
       const { access_token } = response.data;
       localStorage.setItem("supabaseToken", access_token);
       toast.success("You successfully logged in!");
-      setUser({ token: access_token });
+      setUser(access_token);
       navigtae("/");
     } catch (error) {
       const errorMessage =

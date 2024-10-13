@@ -10,6 +10,8 @@ import NotFound from "./pages/NotFound";
 import { Toaster } from "react-hot-toast";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import { UserContextProvider } from "./context/userContext";
+import Profile from "./pages/profile";
+import Appointments from "./pages/Appointments";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
             <Route element={<ProtectedRoute />}>
               <Route path="/signup" element={<SignUp />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/appointments" element={<Appointments />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Route>

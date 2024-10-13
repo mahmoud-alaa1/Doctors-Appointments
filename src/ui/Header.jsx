@@ -64,7 +64,6 @@ function Header() {
   const { user } = useUser();
   const decodedUser = user ? jwtDecode(user) : null;
   const expiresIn = decodedUser ? new Date(decodedUser.exp * 1000) : null;
-  console.log(expiresIn);
   return (
     <header className="text-nowrap p-6 border-b border-[#ADADAD]">
       <nav className="flex flex-col lg:flex-row gap-6 justify-between items-center">

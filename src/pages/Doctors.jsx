@@ -1,5 +1,9 @@
 function Doctors() {
-  return <div>Doctors</div>;
+    return (
+        <div>
+            all doctors
+        </div>
+    )
 }
 
-export default Doctors;
+export default Doctors

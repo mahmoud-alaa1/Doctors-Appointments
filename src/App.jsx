@@ -13,6 +13,7 @@ import Profile from "./pages/profile";
 import Appointments from "./pages/Appointments";
 import ProtectedRouteUser from "./ui/ProtectedRouteUser";
 import ProtectedRouteGuest from "./ui/ProtectedRouteGuest";
+import SingleDoctor from "./pages/SingleDoctor";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route element={<AppLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/doctors" element={<Doctors />} />
+            <Route path="/doctors/:doctorId" element={<SingleDoctor />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route element={<ProtectedRouteUser />}>

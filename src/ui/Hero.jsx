@@ -5,7 +5,7 @@ function Hero() {
   return (
     <div className="bg-primary  px-10 text-[#fff] rounded-lg grid xl:grid-cols-2 xl:grid-rows-1 grid-rows-[fit_fit] ">
       <div className="basis-1/2 flex gap-5 flex-col justify-center xl:py-20 py-5">
-        <h1 className="text-3xl md:text-5xl font-outfit tracking-wider md:leading-relaxed leading-relaxed font-semibold">
+        <h1 className="text-2xl md:text-5xl font-outfit tracking-wider md:leading-relaxed leading-relaxed font-semibold">
           Book Appointment <br /> With Trusted Doctors
         </h1>
         <p className="flex gap-9 flex-col sm:flex-row ">

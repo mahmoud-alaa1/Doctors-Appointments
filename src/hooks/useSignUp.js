@@ -24,10 +24,10 @@ function useSignUp() {
             apikey: import.meta.env.VITE_SUPABASE_KEY,
             "Content-Type": "application/json",
           },
-        },
+        }
       );
+      console.log(response);
 
-      // Step 2: Insert additional user information into the profiles table
       // Step 2: Insert additional user information into the profiles table
       await axios.post(
         `${import.meta.env.VITE_SUPABASE_URL}/rest/v1/users`,
@@ -35,20 +35,18 @@ function useSignUp() {
           name: fullName,
           role: "guest",
           email,
+          auth_id: response.data.user.id,
         },
         {
           headers: {
             apikey: import.meta.env.VITE_SUPABASE_KEY,
             "Content-Type": "application/json",
           },
-        },
+        }
       );
 
       // Store user data in local storage after signup
-      localStorage.setItem(
-        "userProfile",
-        JSON.stringify({ email, fullName }),
-      );
+      localStorage.setItem("userProfile", JSON.stringify({ email, fullName }));
 
       setData(response.data);
       toast.success("Your account is successfully created!");

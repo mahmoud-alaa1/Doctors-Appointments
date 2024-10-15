@@ -1,62 +1,58 @@
 import { useState } from "react";
+import useUserData from "../hooks/useUserData";
+import PageLoader from "../ui/PageLoader";
+import useUpdateUser from "../hooks/useUpdateUser";
 
 function Profile() {
-  const [profileData, setProfileData] = useState({
-    fullName: "Mahmoud Dardier",
-    image: "/default-avatar.png",
-    email: "Mahmoud.mostafa4467@gmail.com",
-    phone: "+20 1122 164 369",
-    address: "El-Sheikh Zayed, 6 Of Ocotber",
-
-    gender: "Male",
-    bithday: "1999-03-21",
-  });
-
+  const { profileData, setProfileData, error, isPending } = useUserData();
+  const { isPending: isPendingUploading, uploadUserData } = useUpdateUser();
   const [isEditing, setIsEditing] = useState(false);
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log(profileData);
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setProfileData((defualtData) => ({
+          ...defualtData,
+          image: reader.result, // Set the base64 image data
+        }));
+      };
+      reader.readAsDataURL(file); // Convert file to base64 URL
+    }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    uploadUserData(profileData);
+  };
+
+  if (isPending) return <PageLoader />;
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="max-w-lg flex flex-col gap-2 text-md m-auto text-center font-outfit">
+    <div className="max-w-lg flex flex-col gap-2 text-md m-auto text-center font-outfit">
       <label className="cursor-pointer">
-        <input
-          type="file"
-          hidden
-          onChange={e =>
-            setProfileData(defualtData => ({
-              ...defualtData,
-              image: e.target.value,
-            }))
-          }
-        />
+        <input type="file" hidden onChange={handleFileChange} />
         <img
+          src={profileData.image || "/default-avatar.png"}
           className="w-[20%] rounded opacity-75 m-auto"
-          src={profileData.image}
           alt="defult image"
         />
       </label>
 
       {isEditing ? (
         <input
-          className="text-center mt-2 text-3xl font-medium"
+          className="text-center mt-2 text-3xl font-medium border"
           type="text"
-          value={profileData.fullName}
-          onChange={e =>
-            setProfileData(defualtData => ({
+          value={profileData.name || "No name"}
+          onChange={(e) =>
+            setProfileData((defualtData) => ({
               ...defualtData,
-              fullName: e.target.value,
+              name: e.target.value,
             }))
           }
         />
       ) : (
-        <p className="text-center mt-2 text-3xl font-medium cursor-not-allowed">
-          {profileData.fullName}
-        </p>
+        <p className="text-center mt-2 text-3xl font-medium cursor-not-allowed">{profileData.name}</p>
       )}
 
       <hr />
@@ -71,11 +67,11 @@ function Profile() {
             <p className="text-gray-800 text-sm font-medium">Phone:</p>
             {isEditing ? (
               <input
-                className="pl-2"
+                className="p-2 border"
                 type="text"
-                value={profileData.phone}
-                onChange={e =>
-                  setProfileData(defualtData => ({
+                value={profileData.phone || "no phone"}
+                onChange={(e) =>
+                  setProfileData((defualtData) => ({
                     ...defualtData,
                     phone: e.target.value,
                   }))
@@ -91,10 +87,13 @@ function Profile() {
             {isEditing ? (
               <p>
                 <input
-                  value={profileData.address}
+                  className="border p-2"
+                  value={profileData.address || "no address"}
                   type="text"
-                  onChange={e =>
-                    setProfileData(defualtData => ({
+                  name="address"
+                  autoComplete="address"
+                  onChange={(e) =>
+                    setProfileData((defualtData) => ({
                       ...defualtData,
                       address: {
                         ...defualtData,
@@ -113,28 +112,26 @@ function Profile() {
       </div>
 
       <div>
-        <p className="text-start underline text-sm text-gray-700 mt-5">
-          BASIC INFORMATION
-        </p>
+        <p className="text-start underline text-sm text-gray-700 mt-5">BASIC INFORMATION</p>
         <div className="flex flex-col mt-3 ">
           <div className="flex flex-row gap-32 mb-2">
             <p className="text-gray-800 text-sm font-medium">Gender:</p>
             {isEditing ? (
               <select
-                value={profileData.gender}
-                onChange={e =>
-                  setProfileData(defualtData => ({
+                value={profileData.gender || "no gender"}
+                onChange={(e) =>
+                  setProfileData((defualtData) => ({
                     ...defualtData,
                     gender: e.target.value,
                   }))
-                }>
+                }
+              >
+                <option value="unknown">unknown</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
               </select>
             ) : (
-              <p className="text-gray-400 cursor-not-allowed">
-                {profileData.gender}
-              </p>
+              <p className="text-gray-400 cursor-not-allowed">{profileData.gender}</p>
             )}
           </div>
 
@@ -143,18 +140,16 @@ function Profile() {
             {isEditing ? (
               <input
                 type="date"
-                value={profileData.bithday}
-                onChange={e =>
-                  setProfileData(defualtData => ({
+                value={profileData.bithday || "no birthday"}
+                onChange={(e) =>
+                  setProfileData((defualtData) => ({
                     ...defualtData,
                     bithday: e.target.value,
                   }))
                 }
               />
             ) : (
-              <p className="text-gray-400 cursor-not-allowed">
-                {profileData.bithday}
-              </p>
+              <p className="text-gray-400 cursor-not-allowed">{profileData.bithday}</p>
             )}
           </div>
         </div>
@@ -164,23 +159,27 @@ function Profile() {
             <button
               type="submit"
               className="border-2 border-indigo-600 rounded-3xl py-2 px-8 hover:bg-primary hover:text-white transition-all"
-              onClick={() => {
+              onClick={(e) => {
+                handleSubmit(e);
                 setIsEditing(false);
-              }}>
+              }}
+            >
               Save Information
             </button>
           ) : (
             <button
+              type="button"
               className="border-2 border-indigo-600  rounded-3xl py-2 px-8 hover:bg-primary hover:text-white transition-all"
               onClick={() => {
                 setIsEditing(true);
-              }}>
+              }}
+            >
               Edit
             </button>
           )}
         </div>
       </div>
-    </form>
+    </div>
   );
 }
 

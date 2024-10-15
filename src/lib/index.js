@@ -14,3 +14,5 @@ export const getHour = (start = 12, after = 0) => {
   const hourFormat = ((start + after) % 12) + 1;
   return `${hourFormat}:00 ${start + after < 12 ? "AM" : "PM"}`;
 };
+
+export const SUPBASE_URL = "https://jxqzqjzqzqzqzqzqzqzq.supabase.co";

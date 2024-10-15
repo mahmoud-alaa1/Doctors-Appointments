@@ -12,7 +12,7 @@ function ProtectedRouteGuest() {
   if (user && expiresIn > new Date()) {
     toast.error("You are already logged in");
 
-    return <Navigate to="/" />;
+    return <Navigate to={'/'} />;
   }
 
   return <Outlet />;

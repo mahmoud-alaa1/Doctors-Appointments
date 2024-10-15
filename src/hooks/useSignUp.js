@@ -2,7 +2,6 @@ import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-
 function useSignUp() {
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(false);

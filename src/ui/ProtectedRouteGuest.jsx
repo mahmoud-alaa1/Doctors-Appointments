@@ -4,7 +4,6 @@ import toast from "react-hot-toast";
 
 function ProtectedRouteGuest() {
   const { user } = useUser();
-
   if (user) {
     toast.error("You are already logged in");
 

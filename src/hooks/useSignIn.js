@@ -1,5 +1,5 @@
-import { useState } from "react";
 import axios from "axios";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/userContext";
@@ -25,7 +25,7 @@ function useSignIn() {
             apikey: import.meta.env.VITE_SUPABASE_KEY,
             "Content-Type": "application/json",
           },
-        }
+        },
       );
       const { access_token } = response.data;
       localStorage.setItem("supabaseToken", access_token);

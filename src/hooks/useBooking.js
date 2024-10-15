@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 function useBooking() {
   const [booking, setBooking] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(null);
-
+  const navigate = useNavigate();
   async function submitBooking({ day, hour }, doctorId, userId, token) {
     try {
       setIsPending(true);
@@ -27,6 +28,7 @@ function useBooking() {
       );
       toast.success("The booking was successful");
       setBooking(booking);
+      navigate("/appointments");
     } catch (error) {
       toast.error("An error occurred. Please try again");
       console.error(error);

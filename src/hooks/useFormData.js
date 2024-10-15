@@ -20,7 +20,6 @@ function useFormData(initialData, schema) {
   // Update form data and trigger validation
   const handleData = (e) => {
     const { name, value } = e.target;
-    console.log(e.target);
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 

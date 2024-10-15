@@ -27,7 +27,7 @@ function useDoctor() {
         setDoctor(response.data[0]);
       } catch (error) {
         toast.error("An error occurred. Please try again later.");
-        console.log(error);
+        console.error(error);
         setError(error.message);
       } finally {
         setIsPending(false);

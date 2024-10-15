@@ -10,7 +10,6 @@ function useSignUp() {
   const navigate = useNavigate();
 
   const signUp = async ({ email, password, fullName }) => {
-    console.log(email, password);
     try {
       setIsPending(true);
 

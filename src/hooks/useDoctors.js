@@ -24,7 +24,7 @@ function useDoctors() {
       setDoctors(response.data); // Axios automatically parses JSON
     } catch (error) {
       toast.error("An error occurred. Please try again later.");
-      console.log(error);
+      console.error(error);
       setError(error.message);
     } finally {
       setIsPending(false);

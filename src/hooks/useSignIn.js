@@ -46,3 +46,19 @@ function useSignIn() {
 }
 
 export default useSignIn;
+
+/*
+
+const response = await axios.post(`${import.meta.env.VITE_SUPABASE_URL}/auth/v1/token?grant_type=password` ,  
+{
+name:fullName,
+email:email,
+password:password
+
+},
+
+,  {headers: {
+apikey: import.meta.env.VITE_SUPABASE_KEY, conmtent-Type: "application/json"})
+
+*/
+

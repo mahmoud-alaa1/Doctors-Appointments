@@ -7,7 +7,7 @@ function About() {
         </p>
       </div>
       <div className=" my-10 flex flex-col xl:flex-row gap-12">
-        <img className=" md:max-h-[500px] object-contain " src="/public/about_image-MG9zrc7b.png" />
+        <img loading="lazy" className=" md:max-h-[500px] object-contain " src="/public/about_image-MG9zrc7b.png" />
         <div className=" justify-center text-gray-600 md:text-2xl md:leading-10 leading-normal text-base">
           <p>
             Welcome to Prescripto, your trusted partner in managing your healthcare needs conveniently and efficiently.
@@ -38,7 +38,7 @@ function About() {
           WHY <span className=" text-gray-700 font-semibold"> CHOOSE US</span>
         </p>
       </div>
-      <div className=" flex flex-col md:flex-row mb-20">
+      <div className=" flex flex-col md:flex-row mb-8">
         <div className=" border  px-10 md:px-10 py-8 sm:py-10 flex flex-col gap-5 text-[15px] hover:bg-primary hover:text-white transition-all duration-300 text-gray-600 cursor-pointer">
           <b>EFFICIENCY:</b>
           <p>EFFICIENCY: Streamlined appointment scheduling that fits into your busy lifestyle.</p>

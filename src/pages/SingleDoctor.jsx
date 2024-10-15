@@ -1,9 +1,19 @@
-import { useParams } from "react-router-dom";
+import useDoctor from "../hooks/useDoctor";
+
+import PageLoader from "../ui/PageLoader";
+import DoctorBio from "../ui/DoctorBio";
+import BookingDoctor from "../ui/BookingDoctor";
 
 function SingleDoctor() {
-  const { doctorId } = useParams();
-  console.log(doctorId);
-  return <div>Single DOCTOR</div>;
+  const { doctor, error, isPending } = useDoctor();
+  console.log(doctor);
+  if (isPending) return <PageLoader />;
+  return (
+    <div>
+      <DoctorBio doctor={doctor} />
+      <BookingDoctor />
+    </div>
+  );
 }
 
 export default SingleDoctor;

@@ -37,7 +37,12 @@ const NavProfile = () => {
 
   return (
     <div className="dropdown relative flex items-center gap-2 ">
-      <img src="/default-avatar.png" className="w-9 rounded-full aspect-square" alt="default user avatar" />
+      <img
+        loading="lazy"
+        src="/default-avatar.png"
+        className="w-9 rounded-full aspect-square"
+        alt="default user avatar"
+      />
       <span className="opacity-75">&#11167;</span>
       <ul className="flex flex-col gap-8">
         <li>

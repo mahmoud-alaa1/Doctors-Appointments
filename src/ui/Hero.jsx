@@ -9,23 +9,16 @@ function Hero() {
           Book Appointment <br /> With Trusted Doctors
         </h1>
         <p className="flex gap-9 flex-col sm:flex-row ">
-          <img
-            src="/group_profiles.png"
-            className="w-[150px] h-[56px]"
-            alt=""
-          />
-          Simply browse through our extensive list of trusted doctors, schedule
-          your appointment hassle-free.
+          <img loading="lazy" src="/group_profiles.png" className="w-[150px] h-[56px]" alt="" />
+          Simply browse through our extensive list of trusted doctors, schedule your appointment hassle-free.
         </p>
-        <Link
-          to="/doctors"
-          className="bg-[#fff] text-[#595959] text-lg font-semibold w-fit gap-3"
-        >
+        <Link to="/doctors" className="bg-[#fff] text-[#595959] text-lg font-semibold w-fit gap-3">
           Book appointment <RightArrow />
         </Link>
       </div>
       <div className="relative basis-1/2 h-fit xl:h-full  ">
         <img
+          loading="lazy"
           className=" bottom-0 xl:absolute max-h-[400px] xl:left-0 xl:right-0 m-auto "
           src="/doc-header-img.png"
           alt=""

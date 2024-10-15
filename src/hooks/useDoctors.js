@@ -15,7 +15,6 @@ function useDoctors() {
       const response = await axios.get(`${import.meta.env.VITE_SUPABASE_URL}/rest/v1/doctors`, {
         headers: {
           apikey: import.meta.env.VITE_SUPABASE_KEY, // Ensure this key is correct
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_KEY}`, // Add Authorization header
           "Content-Type": "application/json",
         },
         params: {

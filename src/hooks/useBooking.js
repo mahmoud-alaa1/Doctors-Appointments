@@ -9,6 +9,7 @@ function useBooking() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   async function submitBooking({ day, hour }, doctorId, userId, token) {
+
     try {
       setIsPending(true);
       const response = await axios.post(

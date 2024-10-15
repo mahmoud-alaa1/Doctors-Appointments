@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import useDoctors from "../hooks/useDoctors";
 import Spinner from "./Spinner";
-import TopDoctor from "./TopDoctor";
+import DoctorCard from "./DoctorCard";
 
 export default function TopDoctors() {
   const { doctors, isPending } = useDoctors();
@@ -14,7 +14,7 @@ export default function TopDoctors() {
 
       <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5 gap-4 pt-5 px-2 sm:px-0">
         {doctors.map((doctor) => (
-          <TopDoctor key={doctor.id + doctor.name} name={doctor.name} id={doctor.id} speciality={doctor.speciality} />
+          <DoctorCard key={doctor.id + doctor.name} name={doctor.name} id={doctor.id} speciality={doctor.speciality} />
         ))}
       </div>
 

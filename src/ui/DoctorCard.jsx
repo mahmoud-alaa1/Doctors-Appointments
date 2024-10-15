@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { imagePath } from "../constants";
 
-function TopDoctor({ name = "unknown", speciality = "unknown", id = 0 }) {
+function DoctorCard({ name = "unknown", speciality = "unknown", id = 0 }) {
   return (
-    <div className=" border border-blue-200 rounded-xl overflow-hidden   hover:translate-y-[-10px] transition-all duration-500">
+    <div className=" border border-blue-200 rounded-xl overflow-hidden h-fit  hover:translate-y-[-10px] transition-all duration-500">
       <Link to={`/doctors/${id}`}>
         <img loading="lazy" className=" bg-blue-50 w-full" src={`${imagePath}doc-${id}.png`} />
         <div className=" p-4">
@@ -19,4 +19,4 @@ function TopDoctor({ name = "unknown", speciality = "unknown", id = 0 }) {
   );
 }
 
-export default TopDoctor;
+export default DoctorCard;

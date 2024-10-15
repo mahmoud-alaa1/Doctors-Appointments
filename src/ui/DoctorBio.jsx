@@ -16,8 +16,8 @@ function DoctorDetails({ doctor }) {
       <h2 className="text-5xl gap-5 flex items-baseline mb-3">
         Dr. {doctor.name} <VerifiedIcon />
       </h2>
-      <h3 className="mb-5 ">
-        {doctor.speciality} &nbsp; <span className="px-3 py-1 rounded-full border">{doctor.experience} Years </span>
+      <h3 className="mb-5 leading-loose">
+        {doctor.speciality} &nbsp; <span className="px-3 py-1 rounded-full border text-nowrap">{doctor.experience} Years </span>
       </h3>
       <h3 className="flex font-semibold items-center gap-2">
         About <InformationIcon />

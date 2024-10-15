@@ -11,7 +11,7 @@ function SingleDoctor() {
   return (
     <div>
       <DoctorBio doctor={doctor} />
-      <BookingDoctor />
+      <BookingDoctor doctor={doctor} />
     </div>
   );
 }

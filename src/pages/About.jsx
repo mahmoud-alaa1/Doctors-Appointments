@@ -8,7 +8,7 @@ function About() {
       </div>
       <div className=" my-10 flex flex-col xl:flex-row gap-12">
         <img loading="lazy" className=" md:max-h-[500px] object-contain " src="/public/about_image-MG9zrc7b.png" />
-        <div className=" justify-center text-gray-600 md:text-2xl md:leading-10 leading-normal text-base">
+        <div className=" justify-center text-gray-600 md:text-xl md:leading-10 leading-normal text-base">
           <p>
             Welcome to Prescripto, your trusted partner in managing your healthcare needs conveniently and efficiently.
             At Prescripto, we understand the challenges individuals face when it comes to scheduling doctor appointments

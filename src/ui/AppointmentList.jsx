@@ -2,7 +2,7 @@ import { jwtDecode } from "jwt-decode";
 import useAppointments from "../hooks/useAppointments";
 import AppointmentItem from "./AppointmentItem";
 import PageLoader from "./PageLoader";
-import { useUser } from "../context/userContext";
+import { useUser } from "../context/UserContext";
 
 function AppointmentList() {
   const { user } = useUser();

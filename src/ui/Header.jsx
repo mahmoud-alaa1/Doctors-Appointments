@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import Logo from "./Logo";
 import LinkUi from "../ui/Link";
-import { useUser } from "../context/userContext";
+import { useUser } from "../context/UserContext";
 import toast from "react-hot-toast";
 import { jwtDecode } from "jwt-decode";
 import useUserData from "../hooks/useUserData";

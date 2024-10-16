@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useUser } from "../context/userContext";
+import { useUser } from "../context/UserContext";
 import { jwtDecode } from "jwt-decode";
 import toast from "react-hot-toast";
 

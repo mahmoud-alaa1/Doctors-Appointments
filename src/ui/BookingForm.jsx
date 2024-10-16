@@ -5,7 +5,7 @@ import { getDate, getHour } from "../lib";
 import Slot from "./Slot";
 import Spinner from "./Spinner";
 import SubmitButton from "./SubmitButton";
-import { useUser } from "../context/userContext";
+import { useUser } from "../context/UserContext";
 import { jwtDecode } from "jwt-decode";
 import useAppointments from "../hooks/useAppointments";
 

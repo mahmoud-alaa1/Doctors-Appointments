@@ -1,7 +1,7 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
-import { useUser } from "../context/userContext";
+import { useUser } from "../context/UserContext";
 import toast from "react-hot-toast";
 
 function useUserData() {

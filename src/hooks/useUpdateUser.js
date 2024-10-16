@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useUser } from "../context/userContext";
+import { useUser } from "../context/UserContext";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import toast from "react-hot-toast";

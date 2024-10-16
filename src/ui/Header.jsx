@@ -5,7 +5,7 @@ import { useUser } from "../context/UserContext";
 import toast from "react-hot-toast";
 import { jwtDecode } from "jwt-decode";
 import useUserData from "../hooks/useUserData";
-
+import DownArrowHead from "../icons/DownArrowHead";
 const links = [
   { name: "Home", url: "/" },
   { name: "All Doctors", url: "/doctors" },
@@ -42,12 +42,11 @@ const NavProfile = () => {
     <div className="dropdown relative flex items-center gap-2 ">
       <img
         loading="lazy"
-
         src={profileData.image || "/default-avatar.png"}
         className="w-9 rounded-full aspect-square"
         alt="default user avatar"
       />
-      <span className="opacity-75">&#11167;</span>
+      <DownArrowHead />
       <ul className="flex flex-col gap-8">
         <li>
           <Link onClick={handleLogout} to={profileLinks[0].url}>

@@ -15,7 +15,7 @@ function useBooking() {
       const response = await axios.post(
         `${import.meta.env.VITE_SUPABASE_URL}/rest/v1/appointments`,
         {
-          time: `${day}T${hour}`,
+          time: `${day}-${hour}`,
           user_id: userId,
           doctor_id: doctorId,
         },

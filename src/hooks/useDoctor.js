@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 
-function useDoctor() {
+function useDoctor(id) {
   const [doctor, setDoctor] = useState({});
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(null);
@@ -21,7 +21,7 @@ function useDoctor() {
             "Content-Type": "application/json",
           },
           params: {
-            id: `eq.${doctorId}`,
+            id: `eq.${id ?? doctorId}`,
           },
         });
         setDoctor(response.data[0]);

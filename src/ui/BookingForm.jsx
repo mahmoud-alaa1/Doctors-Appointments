@@ -39,14 +39,14 @@ function BookingForm({ doctor }) {
     <form onSubmit={handleSubmit} onChange={handleData} className="text-center">
       <div className="flex flex-wrap justify-center my-10 gap-6">
         {Array.from({ length: 7 }).map((_, i) => {
-          const { day, weekday } = getDate(i);
+          const { day, weekday, calender } = getDate(i);
           return (
-            <Slot className="py-8 px-2" key={day + weekday} active={formData.day == day}>
-              <span className="uppercase ">
+            <Slot className="py-8 px-2" key={day + weekday} active={formData.day == calender}>
+              <span className="uppercase">
                 {weekday} <br />
               </span>
               <span>{day}</span>
-              <input value={day} className="hidden" name="day" type="radio" />
+              <input value={calender} className="hidden" name="day" type="radio" />
             </Slot>
           );
         })}

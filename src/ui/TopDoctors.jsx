@@ -7,7 +7,7 @@ export default function TopDoctors() {
   const { doctors, isPending } = useDoctors();
   if (isPending) return <Spinner size={100} />;
   return (
-    <div className="flex flex-col items-center gap-4 my-8 text-gray-900 md:mx-10 text-center">
+    <div className="flex flex-col items-center gap-4 my-8 text-gray-900 md:mx-10 ">
       <h1 className="text-4xl font-medium text-center">Top Doctors to Book</h1>
 
       <p className="text-center text-lg">Simply browse through our extensive list of trusted doctors</p>

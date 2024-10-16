@@ -4,6 +4,7 @@ import LinkUi from "../ui/Link";
 import { useUser } from "../context/userContext";
 import toast from "react-hot-toast";
 import { jwtDecode } from "jwt-decode";
+import useUserData from "../hooks/useUserData";
 
 const links = [
   { name: "Home", url: "/" },
@@ -28,6 +29,8 @@ const profileLinks = [
 ];
 
 const NavProfile = () => {
+  const { profileData } = useUserData();
+
   const { setUser } = useUser();
   const handleLogout = () => {
     setUser(null);
@@ -39,7 +42,8 @@ const NavProfile = () => {
     <div className="dropdown relative flex items-center gap-2 ">
       <img
         loading="lazy"
-        src="/default-avatar.png"
+
+        src={profileData.image || "/default-avatar.png"}
         className="w-9 rounded-full aspect-square"
         alt="default user avatar"
       />

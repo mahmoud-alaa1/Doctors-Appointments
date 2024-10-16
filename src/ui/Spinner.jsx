@@ -1,5 +1,5 @@
-function Spinner() {
-  return <span className={`loader`}></span>;
+function Spinner({ className }) {
+  return <span className={`loader ${className}`}></span>;
 }
 
 export default Spinner;

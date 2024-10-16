@@ -15,7 +15,7 @@ function Profile() {
       reader.onload = () => {
         setProfileData((defualtData) => ({
           ...defualtData,
-          image: reader.result, // Set the base64 image data
+          image: file, // Set the base64 image data
         }));
       };
       reader.readAsDataURL(file); // Convert file to base64 URL
@@ -24,17 +24,23 @@ function Profile() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    uploadUserData(profileData);
+    uploadUserData(profileData, setProfileData);
   };
 
   if (isPending) return <PageLoader />;
+  console.log(profileData);
   return (
     <div className="max-w-lg flex flex-col gap-2 text-md m-auto text-center font-outfit">
-      <label className="cursor-pointer">
-        <input type="file" hidden onChange={handleFileChange} />
+      <label className={`${isEditing ? "cursor-pointer" : "cursor-not-allowed"} `}>
+        <input disabled={!isEditing} type="file" hidden onChange={handleFileChange} />
         <img
+          
+          onError={(e) => {
+            e.target.src = "/default-avatar.png";
+            e.target.error = null;
+          }}
           src={profileData.image || "/default-avatar.png"}
-          className="w-[20%] rounded opacity-75 m-auto"
+          className="w-[300px] aspect-square rounded-full rounded opacity-75 m-auto"
           alt="defult image"
         />
       </label>
@@ -95,10 +101,7 @@ function Profile() {
                   onChange={(e) =>
                     setProfileData((defualtData) => ({
                       ...defualtData,
-                      address: {
-                        ...defualtData,
-                        address: e.target.value,
-                      },
+                      address: e.target.value,
                     }))
                   }
                 />
@@ -140,16 +143,16 @@ function Profile() {
             {isEditing ? (
               <input
                 type="date"
-                value={profileData.bithday || "no birthday"}
-                onChange={(e) =>
+                value={profileData.bithday}
+                onChange={(e) => {
                   setProfileData((defualtData) => ({
                     ...defualtData,
                     bithday: e.target.value,
-                  }))
-                }
+                  }));
+                }}
               />
             ) : (
-              <p className="text-gray-400 cursor-not-allowed">{profileData.bithday}</p>
+              <p className="text-gray-400 cursor-not-allowed">{profileData.birthday}</p>
             )}
           </div>
         </div>

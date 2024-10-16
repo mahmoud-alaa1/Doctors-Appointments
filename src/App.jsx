@@ -8,12 +8,12 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import { Toaster } from "react-hot-toast";
-import { UserContextProvider } from "./context/userContext";
 import Profile from "./pages/profile";
 import Appointments from "./pages/Appointments";
 import ProtectedRouteUser from "./ui/ProtectedRouteUser";
 import ProtectedRouteGuest from "./ui/ProtectedRouteGuest";
 import SingleDoctor from "./pages/SingleDoctor";
+import { UserContextProvider } from "./context/userContext";
 
 function App() {
   return (

@@ -34,7 +34,6 @@ function Profile() {
       <label className={`${isEditing ? "cursor-pointer" : "cursor-not-allowed"} `}>
         <input disabled={!isEditing} type="file" hidden onChange={handleFileChange} />
         <img
-          
           onError={(e) => {
             e.target.src = "/default-avatar.png";
             e.target.error = null;
@@ -172,12 +171,14 @@ function Profile() {
           ) : (
             <button
               type="button"
-              className="border-2 border-indigo-600  rounded-3xl py-2 px-8 hover:bg-primary hover:text-white transition-all"
+              className={`${
+                isPendingUploading ? "bg-primary" : ""
+              } border-2 border-indigo-600  rounded-3xl py-2 px-8 hover:bg-primary hover:text-white transition-all`}
               onClick={() => {
                 setIsEditing(true);
               }}
             >
-              Edit
+              {isPendingUploading ? "Uploading..." : "Edit Information"}
             </button>
           )}
         </div>

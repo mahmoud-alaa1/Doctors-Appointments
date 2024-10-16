@@ -4,7 +4,7 @@ import PageLoader from "../ui/PageLoader";
 import useUpdateUser from "../hooks/useUpdateUser";
 
 function Profile() {
-  const { profileData, setProfileData, error, isPending } = useUserData();
+  const { profileData, setProfileData, isPending } = useUserData();
   const { isPending: isPendingUploading, uploadUserData } = useUpdateUser();
   const [isEditing, setIsEditing] = useState(false);
 
@@ -39,7 +39,7 @@ function Profile() {
             e.target.error = null;
           }}
           src={profileData.image || "/default-avatar.png"}
-          className="w-[300px] aspect-square rounded-full rounded opacity-75 m-auto"
+          className="w-[300px] aspect-square rounded-full  opacity-75 m-auto"
           alt="defult image"
         />
       </label>

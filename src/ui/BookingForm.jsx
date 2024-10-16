@@ -7,19 +7,17 @@ import Spinner from "./Spinner";
 import SubmitButton from "./SubmitButton";
 import { useUser } from "../context/userContext";
 import { jwtDecode } from "jwt-decode";
-const initialState = {
-  day: null,
-};
+import useAppointments from "../hooks/useAppointments";
 
 function BookingForm({ doctor }) {
-  const { formData, handleData } = useFormData(initialState);
-  const { booking, error, isPending, submitBooking } = useBooking();
+  const { formData, handleData } = useFormData({});
+  const { isPending, submitBooking } = useBooking();
   const { user } = useUser();
   const decodedUser = user ? jwtDecode(user) : null;
   const expiresIn = decodedUser ? new Date(decodedUser.exp * 1000) : null;
-
-  const { maxHourPerDay } = doctor;
-
+  const { appointments } = useAppointments(doctor?.id ? { select: "time", doctor_id: `eq.${doctor.id}` } : {});
+  const { maxHourPerDay } = doctor || 0;
+  console.log(appointments);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!user) {
@@ -34,29 +32,39 @@ function BookingForm({ doctor }) {
       submitBooking(formData, doctor.id, decodedUser.sub, user);
     }
   };
+  if (!doctor) return null;
 
   return (
-    <form onSubmit={handleSubmit} onChange={handleData} className="text-center">
+    <form onSubmit={handleSubmit} onChange={(e) => handleData(e)} className="text-center">
       <div className="flex flex-wrap justify-center my-10 gap-6">
         {Array.from({ length: 7 }).map((_, i) => {
           const { day, weekday, calender } = getDate(i);
+          const disabled =
+            appointments.length > 0
+              ? appointments.map((elem) => elem.time).includes(calender + "-" + formData.hour)
+              : false;
           return (
-            <Slot className="py-8 px-2" key={day + weekday} active={formData.day == calender}>
+            <Slot disabled={disabled} className="py-8 px-2" key={day + weekday} active={formData.day == calender}>
               <span className="uppercase">
                 {weekday} <br />
               </span>
               <span>{day}</span>
-              <input value={calender} className="hidden" name="day" type="radio" />
+              <input disabled={disabled} value={calender} className="hidden" name="day" type="radio" />
             </Slot>
           );
         })}
       </div>
       <div className="flex flex-wrap justify-center my-7 gap-6">
         {Array.from({ length: maxHourPerDay }).map((_, i) => {
+          const disabled =
+            appointments.length > 0
+              ? appointments.map((elem) => elem.time).includes(formData.day + "-" + (9 + i))
+              : false;
+          console.log(formData.day + "-" + (9 + i));
           return (
-            <Slot className={`py-1 px-4 w-fit`} key={`hour-${i}`} active={formData.hour == 9 + i}>
+            <Slot disabled={disabled} className={`py-1 px-4 w-fit`} key={`hour-${i}`} active={formData.hour == 9 + i}>
               {getHour(9, i)}
-              <input value={9 + i} className="hidden" name="hour" type="radio" />
+              <input disabled={disabled} value={9 + i} className="hidden" name="hour" type="radio" />
             </Slot>
           );
         })}

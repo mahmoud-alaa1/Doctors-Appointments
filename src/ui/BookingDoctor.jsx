@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { days } from "../constants";
 import BookingForm from "./BookingForm";
 
 function BookingDoctor({ doctor }) {

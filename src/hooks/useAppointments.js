@@ -1,13 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useUser } from "../context/userContext";
-import { jwtDecode } from "jwt-decode";
 
-function useAppointments() {
+function useAppointments(params) {
   const [appointments, setAppointments] = useState({});
   const [isPending, setIsPending] = useState(true);
-  const { user } = useUser();
-  const decodedUser = user && jwtDecode(user);
   useEffect(() => {
     async function fetchAppointments() {
       try {
@@ -17,12 +13,9 @@ function useAppointments() {
             apikey: import.meta.env.VITE_SUPABASE_KEY,
             "Content-Type": "application/json",
           },
-          params: {
-            user_id: `eq.${decodedUser.sub}`,
-          },
+          params,
         });
         setAppointments(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error(error);
       } finally {
@@ -30,7 +23,7 @@ function useAppointments() {
       }
     }
     fetchAppointments();
-  }, [decodedUser.sub]);
+  }, []);
   return { appointments, isPending };
 }
 

@@ -17,7 +17,8 @@ export const getDate = (after = 0) => {
 };
 
 export const getHour = (start = 12, after = 0) => {
-  const hourFormat = ((start + after) % 12) + 1;
+  let hourFormat = (start + after) % 12;
+  hourFormat = hourFormat === 0 ? 12 : hourFormat;
   return `${hourFormat}:00 ${start + after < 12 ? "AM" : "PM"}`;
 };
 

@@ -9,10 +9,10 @@ function SingleDoctor() {
   console.log(doctor);
   if (isPending) return <PageLoader />;
   return (
-    <div>
+    <>
       <DoctorBio doctor={doctor} />
       <BookingDoctor doctor={doctor} />
-    </div>
+    </>
   );
 }
 

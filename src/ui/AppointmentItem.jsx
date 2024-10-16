@@ -4,8 +4,7 @@ import { formatToCalender } from "../lib";
 
 function AppointmentItem({ time, doctorId }) {
   const { doctor, error, isPending } = useDoctor(doctorId);
-  console.log(doctor);
-  console.log(time);
+  if (isPending) return <div>Loading...</div>;
   return (
     <div className="flex gap-5">
       <div className="bg-blue-50 max-h-44 max-w-44">

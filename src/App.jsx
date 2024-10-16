@@ -13,7 +13,7 @@ import Appointments from "./pages/Appointments";
 import ProtectedRouteUser from "./ui/ProtectedRouteUser";
 import ProtectedRouteGuest from "./ui/ProtectedRouteGuest";
 import SingleDoctor from "./pages/SingleDoctor";
-import { UserContextProvider } from "./context/userContext";
+import { UserContextProvider } from "./context/UserContext";
 
 function App() {
   return (

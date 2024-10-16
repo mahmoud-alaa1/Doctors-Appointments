@@ -144,13 +144,12 @@ function Profile() {
             <p className="text-gray-800 text-sm font-medium">Birthday:</p>
             {isEditing ? (
               <input
-              
                 type="date"
                 value={profileData.bithday}
                 onChange={(e) => {
                   setProfileData((defualtData) => ({
                     ...defualtData,
-                    bithday: e.target.value,
+                    birthday: e.target.value,
                   }));
                 }}
               />

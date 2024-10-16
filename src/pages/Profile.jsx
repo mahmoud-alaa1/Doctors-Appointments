@@ -48,7 +48,8 @@ function Profile() {
         <input
           className="text-center mt-2 text-3xl font-medium border"
           type="text"
-          value={profileData.name || "No name"}
+          placeholder="Name"
+          value={profileData.name}
           onChange={(e) =>
             setProfileData((defualtData) => ({
               ...defualtData,
@@ -74,7 +75,8 @@ function Profile() {
               <input
                 className="p-2 border"
                 type="text"
-                value={profileData.phone || "no phone"}
+                placeholder="Phone"
+                value={profileData.phone}
                 onChange={(e) =>
                   setProfileData((defualtData) => ({
                     ...defualtData,
@@ -93,9 +95,10 @@ function Profile() {
               <p>
                 <input
                   className="border p-2"
-                  value={profileData.address || "no address"}
+                  value={profileData.address}
                   type="text"
                   name="address"
+                  placeholder="Address"
                   autoComplete="address"
                   onChange={(e) =>
                     setProfileData((defualtData) => ({
@@ -120,7 +123,7 @@ function Profile() {
             <p className="text-gray-800 text-sm font-medium">Gender:</p>
             {isEditing ? (
               <select
-                value={profileData.gender || "no gender"}
+                value={profileData.gender}
                 onChange={(e) =>
                   setProfileData((defualtData) => ({
                     ...defualtData,
@@ -141,6 +144,7 @@ function Profile() {
             <p className="text-gray-800 text-sm font-medium">Birthday:</p>
             {isEditing ? (
               <input
+              
                 type="date"
                 value={profileData.bithday}
                 onChange={(e) => {

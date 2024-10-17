@@ -9,7 +9,7 @@ return (
     <div className=" my-10 flex flex-col justify-center md:flex-row gap-10 mb-28  ">
       <img
         className=" w-full md:max-w-[360px]"
-        src="/public/contact_image-IJu_19v_.png"
+        src="/contact_image-IJu_19v_.png"
       />
       <div className=" flex flex-col justify-center items-start gap-6">
         <p className=" font-semibold text-lg text-gray-600"> OUR OFFICE</p>

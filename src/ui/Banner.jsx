@@ -20,7 +20,7 @@ export default function Banner() {
         <img
           loading="lazy"
           className=" w-full bottom-0  absolute max-w-md"
-          src="/appointment_img-DzbZlMsi.png"
+          src="/doc10.png"
           alt=""
         />
       </div>

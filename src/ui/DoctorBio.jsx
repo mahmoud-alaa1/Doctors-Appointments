@@ -1,11 +1,10 @@
 import VerifiedIcon from "../icons/VerifiedIcon";
 import InformationIcon from "../icons/InformationIcon";
-import { imagePath } from "../constants";
 
 function DoctorAvatar({ doctor }) {
   return (
     <div className="bg-primary lg:min-w-96 flex items-end max-h-96 justify-center rounded-lg">
-      <img loading="lazy" className="  " src={`${imagePath}doc-${doctor.id}.png`} />
+      <img loading="lazy" src={doctor.image} />
     </div>
   );
 }
@@ -17,7 +16,8 @@ function DoctorDetails({ doctor }) {
         Dr. {doctor.name} <VerifiedIcon />
       </h2>
       <h3 className="mb-5 leading-loose">
-        {doctor.speciality} &nbsp; <span className="px-3 py-1 rounded-full border text-nowrap">{doctor.experience} Years </span>
+        {doctor.speciality} &nbsp;{" "}
+        <span className="px-3 py-1 rounded-full border text-nowrap">{doctor.experience} Years </span>
       </h3>
       <h3 className="flex font-semibold items-center gap-2">
         About <InformationIcon />

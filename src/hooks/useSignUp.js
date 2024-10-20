@@ -26,7 +26,6 @@ function useSignUp() {
           },
         }
       );
-      console.log(response);
 
       // Step 2: Insert additional user information into the profiles table
       await axios.post(

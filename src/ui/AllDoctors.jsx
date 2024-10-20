@@ -15,7 +15,7 @@ function AllDoctors() {
   return (
     <div className="w-full  grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4  px-2 sm:px-0">
       {doctors.map((doctor) => (
-        <DoctorCard key={doctor.id + doctor.name} name={doctor.name} id={doctor.id} speciality={doctor.speciality} />
+        <DoctorCard key={doctor.id + doctor.name} name={doctor.name} id={doctor.id} speciality={doctor.speciality} image={doctor.image} />
       ))}
     </div>
   );

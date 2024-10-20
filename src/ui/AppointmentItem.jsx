@@ -1,4 +1,3 @@
-import { imagePath } from "../constants";
 import useDoctor from "../hooks/useDoctor";
 import { formatToCalender } from "../lib";
 
@@ -8,7 +7,7 @@ function AppointmentItem({ time, doctorId }) {
   return (
     <div className="flex gap-5 sm:flex-row flex-col">
       <div className="bg-blue-50 max-h-44 max-w-44">
-        <img className="h-full w-full object-contain" src={`${imagePath}doc-${doctor.id}.png`} alt="" />
+        <img className="h-full w-full object-contain" src={doctor.image} alt="" />
       </div>
       <div>
         <h2 className="text-xl text-stone-900">Dr. {doctor.name}</h2>

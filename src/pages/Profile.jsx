@@ -28,7 +28,6 @@ function Profile() {
   };
 
   if (isPending) return <PageLoader />;
-  console.log(profileData);
   return (
     <div className="max-w-lg flex flex-col gap-2 text-md m-auto text-center font-outfit">
       <label className={`${isEditing ? "cursor-pointer" : "cursor-not-allowed"} `}>

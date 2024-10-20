@@ -10,7 +10,6 @@ function useUpdateUser() {
   const decodedUser = user ? jwtDecode(user) : null;
 
   const uploadImageToSupabase = async (file) => {
-    console.log("Uploading image to Supabase....");
     try {
       const filePath = `imgs/${new Date().getTime()}_${file.name}`;
       const storageUrl = `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/${filePath}`;

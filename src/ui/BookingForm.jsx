@@ -17,7 +17,6 @@ function BookingForm({ doctor }) {
   const expiresIn = decodedUser ? new Date(decodedUser.exp * 1000) : null;
   const { appointments } = useAppointments(doctor?.id ? { select: "time", doctor_id: `eq.${doctor.id}` } : {});
   const { maxHourPerDay } = doctor || 0;
-  console.log(appointments);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!user) {
@@ -60,7 +59,6 @@ function BookingForm({ doctor }) {
             appointments.length > 0
               ? appointments.map((elem) => elem.time).includes(formData.day + "-" + (9 + i))
               : false;
-          console.log(formData.day + "-" + (9 + i));
           return (
             <Slot disabled={disabled} className={`py-1 px-4 w-fit`} key={`hour-${i}`} active={formData.hour == 9 + i}>
               {getHour(9, i)}
